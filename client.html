@@ -1,0 +1,23 @@
+<head>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+window.onload=()=>{
+e=I=>document.getElementById(I);
+window.d=e('d')
+i=e('i');
+S=c=>d.innerHTML=c;
+C=null
+t=i=>{if(C)return;C=p.connect(i);C.on('data',S)}
+s=i=>C?C.send(i):null;
+p=new Peer();
+p.on('open',S);
+p.on('data',S);
+p.on('connection',c=>c.on('data',S));
+e('f').onsubmit=()=>{t(i.value);s(i.value);i.value='';return false;}
+}
+</script>
+</head>
+<body>
+<p id="d"></p>
+<form id="f">
+<input id="i"/>
